@@ -2,8 +2,8 @@
 {
     using MagicMaze.Core.Entities;
 
-    interface IMazeBuilder
+    public interface IMazeBuilder
     {
-        Maze Build();
+        Maze Build(MazeParameters parameters);
     }
 }
