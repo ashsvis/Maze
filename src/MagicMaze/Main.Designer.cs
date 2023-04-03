@@ -37,7 +37,7 @@ namespace MagicMaze
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(855, 640);
             this.Name = "Main";
-            this.Text = "Game: Crazy Maze";
+            this.Text = "Game: Magis Maze";
             this.ResumeLayout(false);
 
         }
