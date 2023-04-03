@@ -57,7 +57,6 @@
 
             if (cell.Walls.HasFlag(Walls.Top))
             {
-                //draw top line
                 Gl.glBegin(Gl.GL_LINES);
                 Gl.glVertex2f(x, y);
                 Gl.glVertex2f(x + size, y);
@@ -66,7 +65,6 @@
 
             if (cell.Walls.HasFlag(Walls.Right))
             {
-                //draw right line
                 Gl.glBegin(Gl.GL_LINES);
                 Gl.glVertex2f(x + size, y);
                 Gl.glVertex2f(x + size, y + size);
@@ -74,8 +72,7 @@
             }
 
             if (cell.Walls.HasFlag(Walls.Botton))
-            { 
-                //draw bottom line
+            {
                 Gl.glBegin(Gl.GL_LINES);
                 Gl.glVertex2f(x + size, y + size);
                 Gl.glVertex2f(x, y + size);
@@ -83,8 +80,7 @@
             }
 
             if (cell.Walls.HasFlag(Walls.Left))
-            { 
-                //draw left line
+            {
                 Gl.glBegin(Gl.GL_LINES);
                 Gl.glVertex2f(x, y + size);
                 Gl.glVertex2f(x, y);
