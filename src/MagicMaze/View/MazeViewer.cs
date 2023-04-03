@@ -1,5 +1,7 @@
 ﻿namespace MagicMaze.View
 {
+    using System.Drawing;
+
     using Tao.OpenGl;
     using Tao.Platform.Windows;
 
@@ -17,7 +19,7 @@
             _sceneWindow.InitializeContexts();
         }
 
-        public void Draw(Maze maze)
+        public void Draw(Maze maze, Point position)
         {
             Gl.glViewport(0, 0, _sceneWindow.Width, _sceneWindow.Height);
             Gl.glMatrixMode(Gl.GL_PROJECTION);
@@ -32,7 +34,10 @@
             Gl.glClearColor(0.3f, 0.3f, 0.3f, 1);
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT | Gl.GL_DEPTH_BUFFER_BIT);
 
+
             int size = maze.Parameters.CellSize;
+
+            DrawSelector(position.X, position.Y, size);
 
             for (int rowIndex = 0; rowIndex < maze.Parameters.RowCount; rowIndex++)
             {
@@ -42,15 +47,14 @@
                 {
                     int x = columnIndex * size;
 
-                    Draw(maze.Cells[rowIndex, columnIndex], x, y, size);
+                    DrawCell(maze.Cells[rowIndex, columnIndex], x, y, size);
                 }
             }
 
             _sceneWindow.Invalidate();
         }
 
-
-        private void Draw(Cell cell, int x, int y, int size)
+        private void DrawCell(Cell cell, int x, int y, int size)
         {
             Gl.glLineWidth(3f);
             Gl.glColor3f(0.1f, 0.1f, 0.1f);
@@ -86,6 +90,18 @@
                 Gl.glVertex2f(x, y);
                 Gl.glEnd();
             }
+        }
+
+        private void DrawSelector(int x, int y, int size)
+        {
+            Gl.glColor3f(0.3f, 0.1f, 0.1f);
+
+            Gl.glBegin(Gl.GL_POLYGON);
+            Gl.glVertex2f(x, y);
+            Gl.glVertex2f(x + size, y);
+            Gl.glVertex2f(x + size, y + size);
+            Gl.glVertex2f(x, y + size);
+            Gl.glEnd();
         }
     }
 }

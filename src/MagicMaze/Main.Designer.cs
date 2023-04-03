@@ -84,6 +84,7 @@ namespace MagicMaze
             this.sceneWindow.StencilBits = ((byte)(0));
             this.sceneWindow.TabIndex = 1;
             this.sceneWindow.Load += new System.EventHandler(this.sceneWindow_Load);
+            this.sceneWindow.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sceneWindow_KeyDown);
             // 
             // Main
             // 

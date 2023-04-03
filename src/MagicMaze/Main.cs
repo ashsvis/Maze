@@ -30,5 +30,30 @@
         {
             _controller.CreateCommand(new MazeParameters(ROWS_COUNT, COLUMNS_COUNT, CELL_SIZE));
         }
+
+        private void sceneWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.W:
+                    _controller.MoveUpCommand();
+                    break;
+
+                case Keys.S:
+                    _controller.MoveDownCommand();
+                    break;
+
+                case Keys.A:
+                    _controller.MoveLeftCommand();
+                    break;
+
+                case Keys.D:
+                    _controller.MoveRightCommand();
+                    break;
+
+                default:
+                    break;
+            }
+        }
     }
 }
