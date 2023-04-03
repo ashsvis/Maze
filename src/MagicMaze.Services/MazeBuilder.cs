@@ -1,7 +1,6 @@
 ﻿namespace MagicMaze.Services
 {
     using System.Drawing;
-    using System.Collections.Generic;
 
     using MagicMaze.Core.Entities;
     using MagicMaze.Core.Enums;
@@ -13,10 +12,12 @@
         private const int SIGN_OF_NEAREST = 1;
 
         private readonly ICellFactory _cellFactory;
+        private readonly RouteGenerator _routeGenerator;
 
         public MazeBuilder(ICellFactory cellFactory)
         {
             _cellFactory = cellFactory;
+            _routeGenerator = new RouteGenerator();
         }
 
         public Maze Build(MazeParameters parameters)
@@ -33,55 +34,32 @@
                 for (int columnIndex = 0; columnIndex < maze.Parameters.ColumnCount; columnIndex++)
                 {
                     maze.Cells[rowIndex, columnIndex] = _cellFactory.Create(Walls.All);
-
                 }
             }
 
-            // TODO: Generate try path.
-            Merge(maze.Cells, new Point(1, 1), new Point(0, 1));
-            Merge(maze.Cells, new Point(1, 0), new Point(1, 1));
-            Merge(maze.Cells, new Point(1, 1), new Point(1, 2));
-            Merge(maze.Cells, new Point(2, 1), new Point(1, 1));
+            Point currentPoint = new Point(0, 0);
+            Point[] points = _routeGenerator.GenerateReal(maze, currentPoint);
 
-            IEnumerable<Cell> nearests = null;
+            for (int i = 1; i < points.Length; i++)
+            {
+                MergeCells(maze.Cells, currentPoint, points[i]);
+                currentPoint = points[i];
+            }
 
-            nearests = GetNearests(maze.Cells, new Point(0, 0), maze.Parameters.RowCount, maze.Parameters.ColumnCount);
-            nearests = GetNearests(maze.Cells, new Point(0, 1), maze.Parameters.RowCount, maze.Parameters.ColumnCount);
-            nearests = GetNearests(maze.Cells, new Point(1, 1), maze.Parameters.RowCount, maze.Parameters.ColumnCount);
-
-            // TODO: Generate dead ends.
+            while (_routeGenerator.TryGenerateFake(maze, out points))
+            {
+                currentPoint = points[0];
+                for (int i = 1; i < points.Length; i++)
+                {
+                    MergeCells(maze.Cells, currentPoint, points[i]);
+                    currentPoint = points[i];
+                }
+            }
 
             return maze;
         }
 
-        private IEnumerable<Cell> GetNearests(Cell[,] cells, Point point, int rowCount, int columnCount)
-        {
-            var nearests = new List<Cell>(4);
-
-            if (point.X > 0)
-            {
-                nearests.Add(cells[point.X - 1, point.Y]);
-            }
-
-            if (point.Y > 0)
-            {
-                nearests.Add(cells[point.X, point.Y - 1]);
-            }
-
-            if (point.Y < columnCount - 1)
-            {
-                nearests.Add(cells[point.X, point.Y + 1]);
-            }
-
-            if (point.X < rowCount - 1)
-            {
-                nearests.Add(cells[point.X + 1, point.Y]);
-            }
-
-            return nearests;
-        }
-
-        private void Merge(Cell[,] cells, Point first, Point second)
+        private void MergeCells(Cell[,] cells, Point first, Point second)
         {
             if (first.X != second.X && first.Y != second.Y)
             {

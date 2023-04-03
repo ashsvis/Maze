@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="CellFactory.cs" />
     <Compile Include="MazeBuilder.cs" />
+    <Compile Include="RouteGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
