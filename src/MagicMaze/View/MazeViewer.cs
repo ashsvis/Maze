@@ -52,7 +52,7 @@
 
         private void Draw(Cell cell, int x, int y, int size)
         {
-            Gl.glLineWidth(5f);
+            Gl.glLineWidth(3f);
             Gl.glColor3f(0.1f, 0.1f, 0.1f);
 
             if (cell.Walls.HasFlag(Walls.Top))
