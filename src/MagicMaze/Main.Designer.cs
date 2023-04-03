@@ -59,13 +59,13 @@ namespace MagicMaze
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // оРазработчикеToolStripMenuItem
             // 
             this.оРазработчикеToolStripMenuItem.Name = "оРазработчикеToolStripMenuItem";
-            this.оРазработчикеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оРазработчикеToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.оРазработчикеToolStripMenuItem.Text = "О разработчике";
             // 
             // sceneWindow
@@ -92,7 +92,7 @@ namespace MagicMaze
             this.ClientSize = new System.Drawing.Size(855, 640);
             this.Controls.Add(this.sceneWindow);
             this.Controls.Add(this.menu);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menu;
             this.Name = "Main";
             this.Text = "Game: Magis Maze";

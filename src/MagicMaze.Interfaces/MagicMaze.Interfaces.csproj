@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ICellFactory.cs" />
     <Compile Include="IMazeBuilder.cs" />
+    <Compile Include="IMazeModel.cs" />
     <Compile Include="IMazeViewer.cs" />
     <Compile Include="IRouteFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

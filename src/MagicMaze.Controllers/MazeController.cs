@@ -7,20 +7,20 @@
     public class MazeController
     {
         private readonly IMazeBuilder _builder;
-        private readonly IMazeViewer _viewer;
+        private readonly IMazeModel _model;
 
         private Maze _current;
 
-        public MazeController(IMazeViewer mazeViewer)
+        public MazeController(IMazeModel mazeModel)
         {
-            _viewer = mazeViewer;
+            _model = mazeModel;
             _builder = new MazeBuilder(new CellFactory());
         }
 
         public void CreateCommand(MazeParameters parameters) 
         {
             _current = _builder.Build(parameters);
-            _viewer.Draw(_current);
+            _model.Push(_current);
         }
     }
 }

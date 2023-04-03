@@ -20,16 +20,20 @@
                 return Maze.Empty;
             }
 
-            var cells = new Cell[parameters.RowCount, parameters.ColumnCount];
-            for (int i = 0; i < cells.Rank; i++)
+            var maze = new Maze(parameters);
+
+            for (int rowIndex = 0; rowIndex < maze.Parameters.RowCount; rowIndex++)
             {
-                for (int j = 0; j < cells.GetLength(i); j++)
+                for (int columnIndex = 0; columnIndex < maze.Parameters.ColumnCount; columnIndex++)
                 {
-                    cells[i, j] = _cellFactory.Create(Walls.All);
+                    maze.Cells[rowIndex, columnIndex] = _cellFactory.Create(Walls.All);
                 }
             }
 
-            return new Maze(cells);
+            // TODO: Generate try path.
+            // TODO: Generate dead ends.
+
+            return maze;
         }
     }
 }

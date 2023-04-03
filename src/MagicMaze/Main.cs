@@ -4,23 +4,26 @@
 
     using MagicMaze.Controllers;
     using MagicMaze.Core.Entities;
-    using MagicMaze.Interfaces;
     using MagicMaze.View;
+    using Maze.Model;
 
     public partial class Main : Form
     {
-        private const int ROWS_COUNT = 15;
-        private const int COLUMNS_COUNT = 20;
-        private const int CELL_SIZE = 10;
+        private const int ROWS_COUNT = 25;
+        private const int COLUMNS_COUNT = 25;
+        private const int CELL_SIZE = 1;
 
-        private readonly IMazeViewer _viewer;
+        private readonly MazeViewer _viewer;
+        private readonly MazeModel _model;
         private readonly MazeController _controller;
 
         public Main()
         {
             InitializeComponent();
+
             _viewer = new MazeViewer(sceneWindow);
-            _controller = new MazeController(_viewer);
+            _model = new MazeModel(_viewer);
+            _controller = new MazeController(_model);
         }
 
         private void sceneWindow_Load(object sender, System.EventArgs e)

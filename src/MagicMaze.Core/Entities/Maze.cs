@@ -2,13 +2,16 @@
 {
     public class Maze
     {
-        public static Maze Empty => new Maze(new Cell[0, 0]);
+        public static Maze Empty => new Maze(MazeParameters.Empty);
 
         public Cell[,] Cells { get; protected set; }
 
-        public Maze(Cell[,] cells)
+        public MazeParameters Parameters { get; protected set; }
+
+        public Maze(MazeParameters parameters)
         {
-            Cells = cells;
+            Parameters = parameters;
+            Cells = new Cell[parameters.RowCount, parameters.ColumnCount];
         }
     }
 }
