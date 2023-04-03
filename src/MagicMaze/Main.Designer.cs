@@ -83,6 +83,7 @@ namespace MagicMaze
             this.sceneWindow.Size = new System.Drawing.Size(855, 613);
             this.sceneWindow.StencilBits = ((byte)(0));
             this.sceneWindow.TabIndex = 1;
+            this.sceneWindow.Load += new System.EventHandler(this.sceneWindow_Load);
             // 
             // Main
             // 

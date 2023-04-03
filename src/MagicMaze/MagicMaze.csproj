@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\MazeViewer.cs" />
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,8 +93,16 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MagicMaze.Controllers\MagicMaze.Controllers.csproj">
-      <Project>{d5513bd2-2dc6-4fe2-98cb-5e6fc3f5e7f5}</Project>
+      <Project>{E5B623B2-DB8E-4502-BBF1-34B55F52A609}</Project>
       <Name>MagicMaze.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MagicMaze.Core\MagicMaze.Core.csproj">
+      <Project>{19AB7778-7EF3-4B76-93C0-35AD7C64FF3D}</Project>
+      <Name>MagicMaze.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MagicMaze.Interfaces\MagicMaze.Interfaces.csproj">
+      <Project>{3C7F0222-55AC-4F03-BE84-9521C75940B8}</Project>
+      <Name>MagicMaze.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
