@@ -10,8 +10,6 @@
 
         public int CellSize { get; protected set; }
 
-        public int BorderSize { get; protected set; }
-
         public MazeParameters(int rowCount, int columnCount, int cellSize)
         {
             RowCount = rowCount;
