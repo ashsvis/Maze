@@ -1,7 +1,7 @@
-﻿using MagicMaze.Core.Entities;
-
-namespace MagicMaze.Controllers
+﻿namespace MagicMaze.Interfaces
 {
+    using MagicMaze.Core.Entities;
+
     public interface IMazeViewer
     {
         void Draw(Maze maze);
