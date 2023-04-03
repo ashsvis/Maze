@@ -1,6 +1,6 @@
 ﻿namespace MagicMaze.Interfaces
 {
-    using MagicMaze.Core;
+    using MagicMaze.Core.Entities;
 
     interface IMazeBuilder
     {
