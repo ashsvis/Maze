@@ -1,5 +1,8 @@
 ﻿namespace MagicMaze.Core.Enums
 {
+    using System;
+
+    [Flags]
     public enum Walls
     {
         None = 0,
