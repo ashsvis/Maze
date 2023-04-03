@@ -3,7 +3,7 @@
     using MagicMaze.Core.Enums;
     using MagicMaze.Core.Entities;
 
-    interface ICellFactory
+    public interface ICellFactory
     {
         Cell Create(Walls walls);
     }
