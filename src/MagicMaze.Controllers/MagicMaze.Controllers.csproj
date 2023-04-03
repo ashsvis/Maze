@@ -1,12 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MagicMaze.Core\MagicMaze.Core.csproj" />
     <ProjectReference Include="..\MagicMaze.Interfaces\MagicMaze.Interfaces.csproj" />
+    <ProjectReference Include="..\MagicMaze.Services\MagicMaze.Services.csproj" />
   </ItemGroup>
 
 </Project>
