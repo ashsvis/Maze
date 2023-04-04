@@ -26,7 +26,27 @@
             _viewer.Draw(_maze, _position);
         }
 
-        public void Push(Point position)
+        public void MovePositionUp()
+        {
+            MoveTo(new Point(_position.X, _position.Y + 1));
+        }
+
+        public void MovePositionDown()
+        {
+            MoveTo(new Point(_position.X, _position.Y - 1));
+        }
+
+        public void MovePositionLeft()
+        {
+            MoveTo(new Point(_position.X - 1, _position.Y));
+        }
+
+        public void MovePositionRight()
+        {
+            MoveTo(new Point(_position.X + 1, _position.Y));
+        }
+
+        private void MoveTo(Point position)
         {
             _position = position;
             _viewer.Draw(_maze, _position);

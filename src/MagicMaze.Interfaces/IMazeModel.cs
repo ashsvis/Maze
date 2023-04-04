@@ -1,14 +1,13 @@
 ﻿namespace MagicMaze.Interfaces
 {
-    using System.Drawing;
-
     using MagicMaze.Core.Entities;
 
     public interface IMazeModel
     {
-        Point Position { get; }
-
+        void MovePositionUp();
+        void MovePositionDown();
+        void MovePositionLeft();
+        void MovePositionRight();
         void Push(Maze maze);
-        void Push(Point position);
     }
 }
