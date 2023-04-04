@@ -31,13 +31,16 @@
             Gl.glOrtho(0f, columnSize, 0f, rowSize, -1f, 1f);
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
 
-            Gl.glClearColor(0.3f, 0.3f, 0.3f, 1);
+            Gl.glClearColor(
+                maze.Colors.Background.R / 255.0f,
+                maze.Colors.Background.G / 255.0f,
+                maze.Colors.Background.B / 255.0f,
+                maze.Colors.Background.A / 255.0f);
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT | Gl.GL_DEPTH_BUFFER_BIT);
-
 
             int size = maze.Parameters.CellSize;
 
-            DrawSelector(position.X, position.Y, size);
+            DrawSelector(position.X, position.Y, size, maze.Colors.Cursor);
 
             for (int rowIndex = 0; rowIndex < maze.Parameters.RowCount; rowIndex++)
             {
@@ -47,17 +50,17 @@
                 {
                     int x = columnIndex * size;
 
-                    DrawCell(maze.Cells[rowIndex, columnIndex], x, y, size);
+                    DrawCell(maze.Cells[rowIndex, columnIndex], x, y, size, maze.Colors.Wall);
                 }
             }
 
             _sceneWindow.Invalidate();
         }
 
-        private void DrawCell(Cell cell, int x, int y, int size)
+        private void DrawCell(Cell cell, int x, int y, int size, Color color)
         {
             Gl.glLineWidth(3f);
-            Gl.glColor3f(0.1f, 0.1f, 0.1f);
+            Gl.glColor3f(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f);
 
             if (cell.Walls.HasFlag(Walls.Top))
             {
@@ -92,9 +95,9 @@
             }
         }
 
-        private void DrawSelector(int x, int y, int size)
+        private void DrawSelector(int x, int y, int size, Color color)
         {
-            Gl.glColor3f(0.3f, 0.1f, 0.1f);
+            Gl.glColor3f(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f);
 
             Gl.glBegin(Gl.GL_POLYGON);
             Gl.glVertex2f(x, y);

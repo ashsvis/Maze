@@ -17,9 +17,9 @@
             _builder = new MazeBuilder(new CellFactory());
         }
 
-        public void CreateCommand(MazeParameters parameters) 
+        public void CreateCommand(MazeParameters parameters, MazeColorSettings colorSettings) 
         {
-            _current = _builder.Build(parameters);
+            _current = _builder.Build(parameters, colorSettings);
             _model.Push(_current);
         }
 

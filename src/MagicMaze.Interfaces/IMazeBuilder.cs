@@ -4,6 +4,6 @@
 
     public interface IMazeBuilder
     {
-        Maze Build(MazeParameters parameters);
+        Maze Build(MazeParameters parameters, MazeColorSettings colorSettings);
     }
 }

@@ -28,7 +28,7 @@
 
         private void sceneWindow_Load(object sender, System.EventArgs e)
         {
-            _controller.CreateCommand(new MazeParameters(ROWS_COUNT, COLUMNS_COUNT, CELL_SIZE));
+            _controller.CreateCommand(new MazeParameters(ROWS_COUNT, COLUMNS_COUNT, CELL_SIZE), MazeColorSettings.Default);
         }
 
         private void sceneWindow_KeyDown(object sender, KeyEventArgs e)
