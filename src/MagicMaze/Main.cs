@@ -11,8 +11,8 @@
 
     public partial class Main : Form
     {
-        private const int ROWS_COUNT = 30;
-        private const int COLUMNS_COUNT = 30;
+        private const int ROWS_COUNT = 15;
+        private const int COLUMNS_COUNT = 15;
         private const int CELL_SIZE = 1;
 
         private Point START_POINT => new Point(0, 0);
