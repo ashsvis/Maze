@@ -132,3 +132,5 @@ $RECYCLE.BIN/
 
 _NCrunch*
 /src/MagicMaze/.vs/MagicMaze/DesignTimeBuild
+/src/MagicMaze/.vs/MagicMaze/v16/TestStore/0/testlog.manifest
+/src/MagicMaze/.vs/MagicMaze/v16/TestStore/0/000.testlog
