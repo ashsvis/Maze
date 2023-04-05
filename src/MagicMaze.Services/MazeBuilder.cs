@@ -12,12 +12,10 @@
         private const int SIGN_OF_NEAREST = 1;
 
         private readonly ICellFactory _cellFactory;
-        private readonly RouteGenerator _routeGenerator;
 
         public MazeBuilder(ICellFactory cellFactory)
         {
             _cellFactory = cellFactory;
-            _routeGenerator = new RouteGenerator();
         }
 
         public Maze Build(MazeParameters parameters, MazeColorSettings colorSettings)
@@ -37,18 +35,11 @@
                 }
             }
 
-            Point currentPoint = new Point(0, 0);
-            Point[] points = _routeGenerator.GenerateReal(maze, currentPoint);
+            var routeGenerator = new RouteGenerator(maze.Parameters, new Point(0, 0));
 
-            for (int i = 1; i < points.Length; i++)
+            while (routeGenerator.TryGenerate(out Point[]  points))
             {
-                MergeCells(maze.Cells, currentPoint, points[i]);
-                currentPoint = points[i];
-            }
-
-            while (_routeGenerator.TryGenerateFake(maze, out points))
-            {
-                currentPoint = points[0];
+                Point currentPoint = points[0];
                 for (int i = 1; i < points.Length; i++)
                 {
                     MergeCells(maze.Cells, currentPoint, points[i]);
