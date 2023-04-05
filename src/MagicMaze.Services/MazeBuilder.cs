@@ -64,13 +64,13 @@
 
             if (-deltaX == SIGN_OF_NEAREST)
             {
-                cells[first.X, first.Y] = _cellFactory.Create(cells[first.X, first.Y].Walls & ~Walls.Botton);
-                cells[second.X, second.Y] = _cellFactory.Create(cells[second.X, second.Y].Walls & ~Walls.Top);
+                cells[first.X, first.Y] = _cellFactory.Create(cells[first.X, first.Y].Walls & ~Walls.Top);
+                cells[second.X, second.Y] = _cellFactory.Create(cells[second.X, second.Y].Walls & ~Walls.Botton);
             }
             else if (deltaX == SIGN_OF_NEAREST)
             {
-                cells[first.X, first.Y] = _cellFactory.Create(cells[first.X, first.Y].Walls & ~Walls.Top);
-                cells[second.X, second.Y] = _cellFactory.Create(cells[second.X, second.Y].Walls & ~Walls.Botton);
+                cells[first.X, first.Y] = _cellFactory.Create(cells[first.X, first.Y].Walls & ~Walls.Botton);
+                cells[second.X, second.Y] = _cellFactory.Create(cells[second.X, second.Y].Walls & ~Walls.Top);
             }
 
             if (-deltaY == SIGN_OF_NEAREST)
