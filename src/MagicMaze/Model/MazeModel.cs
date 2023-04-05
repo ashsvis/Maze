@@ -3,16 +3,17 @@
     using System.Drawing;
 
     using MagicMaze.Core.Entities;
+    using MagicMaze.Core.Enums;
     using MagicMaze.Interfaces;
 
     public class MazeModel : IMazeModel
     {
+        private const int SIGN_OF_NEAREST = 1;
+
         private readonly IMazeViewer _viewer;
 
         private Maze _maze;
         private Point _position;
-
-        public Point Position => _position;
 
         public MazeModel(IMazeViewer mazeViewer) 
         {
@@ -49,6 +50,44 @@
 
         private void MoveTo(Point position)
         {
+            if (_position.X != position.X && _position.Y != position.Y)
+            {
+                return;
+            }
+
+            int deltaX = _position.X - position.X;
+            int deltaY = _position.Y - position.Y;
+
+            if (-deltaX == SIGN_OF_NEAREST)
+            {
+                if (_maze.Cells[_position.Y, _position.X].Walls.HasFlag(Walls.Right))
+                {
+                    return;
+                }
+            }
+            else if (deltaX == SIGN_OF_NEAREST)
+            {
+                if (_maze.Cells[_position.Y, _position.X].Walls.HasFlag(Walls.Left))
+                {
+                    return;
+                }
+            }
+
+            if (-deltaY == SIGN_OF_NEAREST)
+            {
+                if (_maze.Cells[_position.Y, _position.X].Walls.HasFlag(Walls.Top))
+                {
+                    return;
+                }
+            }
+            else if (deltaY == SIGN_OF_NEAREST)
+            {
+                if (_maze.Cells[_position.Y, _position.X].Walls.HasFlag(Walls.Bottom))
+                {
+                    return;
+                }
+            }
+
             _position = position;
             _viewer.Draw(_maze, _position);
         }
