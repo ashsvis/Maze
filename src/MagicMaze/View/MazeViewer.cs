@@ -11,6 +11,8 @@
 
     public class MazeViewer : IMazeViewer
     {
+        private const int CELL_SIZE = 1;
+
         private readonly SimpleOpenGlControl _sceneWindow;
 
         public MazeViewer(SimpleOpenGlControl sceneWindow)
@@ -25,8 +27,8 @@
             Gl.glMatrixMode(Gl.GL_PROJECTION);
             Gl.glLoadIdentity();
 
-            int rowSize = maze.Parameters.CellSize * maze.Parameters.RowCount;
-            int columnSize = maze.Parameters.CellSize * maze.Parameters.ColumnCount;
+            int rowSize = CELL_SIZE * maze.Parameters.RowCount;
+            int columnSize = CELL_SIZE * maze.Parameters.ColumnCount;
 
             Gl.glOrtho(0f, columnSize, 0f, rowSize, -1f, 1f);
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
@@ -38,20 +40,18 @@
                 maze.Colors.Background.A / 255.0f);
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT | Gl.GL_DEPTH_BUFFER_BIT);
 
-            int size = maze.Parameters.CellSize;
-
-            DrawPolygon(maze.Parameters.FinishPoint, maze.Colors.Finish, size);
-            DrawPolygon(cursorPosition, maze.Colors.Cursor, size);
+            DrawPolygon(maze.Parameters.FinishPoint, maze.Colors.Finish, CELL_SIZE);
+            DrawPolygon(cursorPosition, maze.Colors.Cursor, CELL_SIZE);
 
             for (int rowIndex = 0; rowIndex < maze.Parameters.RowCount; rowIndex++)
             {
-                int y = rowIndex * size;
+                int y = rowIndex * CELL_SIZE;
 
                 for (int columnIndex = 0; columnIndex < maze.Parameters.ColumnCount; columnIndex++)
                 {
-                    int x = columnIndex * size;
+                    int x = columnIndex * CELL_SIZE;
 
-                    DrawCell(maze.Cells[rowIndex, columnIndex], x, y, size, maze.Colors.Wall);
+                    DrawCell(maze.Cells[rowIndex, columnIndex], x, y, CELL_SIZE, maze.Colors.Wall);
                 }
             }
 

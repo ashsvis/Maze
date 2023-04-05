@@ -13,7 +13,6 @@
     {
         private const int ROWS_COUNT = 15;
         private const int COLUMNS_COUNT = 15;
-        private const int CELL_SIZE = 1;
 
         private Point START_POINT => new Point(0, 0);
         private Point FINISH_POINT => new Point(ROWS_COUNT - 1, COLUMNS_COUNT - 1);
@@ -58,12 +57,12 @@
 
         private void SceneWindow_Load(object sender, EventArgs e)
         {
-            _controller.CreateCommand(new MazeParameters(ROWS_COUNT, COLUMNS_COUNT, CELL_SIZE, START_POINT, FINISH_POINT), MazeColorSettings.Default);
+            _controller.CreateCommand(new MazeParameters(ROWS_COUNT, COLUMNS_COUNT, START_POINT, FINISH_POINT), MazeColorSettings.Default);
         }
 
         private void RebuildMenuItem_Click(object sender, EventArgs e)
         {
-            _controller.CreateCommand(new MazeParameters(ROWS_COUNT, COLUMNS_COUNT, CELL_SIZE, START_POINT, FINISH_POINT), MazeColorSettings.Default);
+            _controller.CreateCommand(new MazeParameters(ROWS_COUNT, COLUMNS_COUNT, START_POINT, FINISH_POINT), MazeColorSettings.Default);
         }
     }
 }
