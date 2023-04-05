@@ -17,12 +17,13 @@
         public MazeModel(IMazeViewer mazeViewer) 
         {
             _viewer = mazeViewer;
-            _position = new Point(0, 0);
+            _position = Point.Empty;
         }
 
         public void Push(Maze maze)
         {
             _maze = maze;
+            _position = maze.Parameters.StartPoint;
             _viewer.Draw(_maze, _position);
         }
 
