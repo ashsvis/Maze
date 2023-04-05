@@ -19,7 +19,7 @@
             _sceneWindow.InitializeContexts();
         }
 
-        public void Draw(Maze maze, Point position)
+        public void Draw(Maze maze, Point cursorPosition)
         {
             Gl.glViewport(0, 0, _sceneWindow.Width, _sceneWindow.Height);
             Gl.glMatrixMode(Gl.GL_PROJECTION);
@@ -40,7 +40,8 @@
 
             int size = maze.Parameters.CellSize;
 
-            DrawSelector(position.X, position.Y, size, maze.Colors.Cursor);
+            DrawPolygon(maze.Parameters.FinishPoint, maze.Colors.Finish, size);
+            DrawPolygon(cursorPosition, maze.Colors.Cursor, size);
 
             for (int rowIndex = 0; rowIndex < maze.Parameters.RowCount; rowIndex++)
             {
@@ -95,15 +96,15 @@
             }
         }
 
-        private void DrawSelector(int x, int y, int size, Color color)
+        private void DrawPolygon(Point point, Color color, int size)
         {
             Gl.glColor3f(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f);
 
             Gl.glBegin(Gl.GL_POLYGON);
-            Gl.glVertex2f(x, y);
-            Gl.glVertex2f(x + size, y);
-            Gl.glVertex2f(x + size, y + size);
-            Gl.glVertex2f(x, y + size);
+            Gl.glVertex2f(point.X, point.Y);
+            Gl.glVertex2f(point.X + size, point.Y);
+            Gl.glVertex2f(point.X + size, point.Y + size);
+            Gl.glVertex2f(point.X, point.Y + size);
             Gl.glEnd();
         }
     }

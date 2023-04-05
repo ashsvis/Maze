@@ -13,18 +13,21 @@
 
         private const int MAXIMUM_NUMBER_OF_WALLS = 4;
 
-        private readonly MazeParameters _mazeParameters;
         private readonly Queue<Point> _stackPoints;
         private readonly bool[,] _visitedPoints;
         private readonly RandomNumberGenerator _randomGenerator;
+        private readonly int _rowCount;
+        private readonly int _columnCount;
 
-        public RouteGenerator(MazeParameters mazeParameters, Point startPoint)
+        public RouteGenerator(Point startPoint, int rowCount, int columnCount)
         {
-            _mazeParameters = mazeParameters;
-            _randomGenerator = RandomNumberGenerator.Create();
-            _visitedPoints = new bool[mazeParameters.RowCount, mazeParameters.ColumnCount];
+            _randomGenerator = RandomNumberGenerator.Create();            
+            _visitedPoints = new bool[rowCount, columnCount];
             _stackPoints = new Queue<Point>();
             _stackPoints.Enqueue(startPoint);
+
+            _rowCount = rowCount;
+            _columnCount = columnCount;
         }
 
         public bool TryGenerate(out Point[] points)
@@ -91,12 +94,12 @@
                 nearestPoints.Add(new Point(point.X, point.Y - 1));
             }
 
-            if (point.Y < _mazeParameters.ColumnCount - 1 && _visitedPoints[point.X, point.Y + 1] == false)
+            if (point.Y < _columnCount - 1 && _visitedPoints[point.X, point.Y + 1] == false)
             {
                 nearestPoints.Add(new Point(point.X, point.Y + 1));
             }
 
-            if (point.X < _mazeParameters.RowCount - 1 && _visitedPoints[point.X + 1, point.Y] == false)
+            if (point.X < _rowCount - 1 && _visitedPoints[point.X + 1, point.Y] == false)
             {
                 nearestPoints.Add(new Point(point.X + 1, point.Y));
             }

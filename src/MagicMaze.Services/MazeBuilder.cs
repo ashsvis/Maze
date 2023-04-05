@@ -35,7 +35,10 @@
                 }
             }
 
-            var routeGenerator = new RouteGenerator(maze.Parameters, new Point(0, 0));
+            var routeGenerator = new RouteGenerator(
+                maze.Parameters.StartPoint, 
+                maze.Parameters.RowCount,
+                maze.Parameters.ColumnCount);
 
             while (routeGenerator.TryGenerate(out Point[]  points))
             {
