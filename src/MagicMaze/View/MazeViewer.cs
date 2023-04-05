@@ -63,7 +63,7 @@
             Gl.glLineWidth(3f);
             Gl.glColor3f(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f);
 
-            if (cell.Walls.HasFlag(Walls.Botton))
+            if (cell.Walls.HasFlag(Walls.Bottom))
             {
                 Gl.glBegin(Gl.GL_LINES);
                 Gl.glVertex2f(x, y);
