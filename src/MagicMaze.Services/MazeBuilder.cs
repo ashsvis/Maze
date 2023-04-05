@@ -6,7 +6,6 @@
     using MagicMaze.Core.Enums;
     using MagicMaze.Interfaces;
 
-
     public class MazeBuilder : IMazeBuilder
     {
         private const int SIGN_OF_NEAREST = 1;
@@ -40,7 +39,7 @@
                 maze.Parameters.RowCount,
                 maze.Parameters.ColumnCount);
 
-            while (routeGenerator.TryGenerate(out Point[]  points))
+            while (routeGenerator.TryGenerate(out Point[] points))
             {
                 Point currentPoint = points[0];
                 for (int i = 1; i < points.Length; i++)
