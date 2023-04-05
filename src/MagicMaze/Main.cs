@@ -1,5 +1,6 @@
 ﻿namespace MagicMaze
 {
+    using System;
     using System.Drawing;
     using System.Windows.Forms;
 
@@ -10,8 +11,8 @@
 
     public partial class Main : Form
     {
-        private const int ROWS_COUNT = 25;
-        private const int COLUMNS_COUNT = 25;
+        private const int ROWS_COUNT = 30;
+        private const int COLUMNS_COUNT = 30;
         private const int CELL_SIZE = 1;
 
         private Point START_POINT => new Point(0, 0);
@@ -30,12 +31,7 @@
             _controller = new MazeController(_model);
         }
 
-        private void sceneWindow_Load(object sender, System.EventArgs e)
-        {
-            _controller.CreateCommand(new MazeParameters(ROWS_COUNT, COLUMNS_COUNT, CELL_SIZE, START_POINT, FINISH_POINT), MazeColorSettings.Default);
-        }
-
-        private void sceneWindow_KeyDown(object sender, KeyEventArgs e)
+        private void SceneWindow_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
@@ -58,6 +54,16 @@
                 default:
                     break;
             }
+        }
+
+        private void SceneWindow_Load(object sender, EventArgs e)
+        {
+            _controller.CreateCommand(new MazeParameters(ROWS_COUNT, COLUMNS_COUNT, CELL_SIZE, START_POINT, FINISH_POINT), MazeColorSettings.Default);
+        }
+
+        private void RebuildMenuItem_Click(object sender, EventArgs e)
+        {
+            _controller.CreateCommand(new MazeParameters(ROWS_COUNT, COLUMNS_COUNT, CELL_SIZE, START_POINT, FINISH_POINT), MazeColorSettings.Default);
         }
     }
 }

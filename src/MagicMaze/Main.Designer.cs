@@ -30,43 +30,62 @@ namespace MagicMaze
         private void InitializeComponent()
         {
             this.menu = new System.Windows.Forms.MenuStrip();
-            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.оРазработчикеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ActionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RebuildMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DetailMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HelpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ContactMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sceneWindow = new Tao.Platform.Windows.SimpleOpenGlControl();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // menu
             // 
+            this.menu.GripMargin = new System.Windows.Forms.Padding(2);
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.оПрограммеToolStripMenuItem});
+            this.ActionMenuItem,
+            this.DetailMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(855, 24);
+            this.menu.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
+            this.menu.Size = new System.Drawing.Size(600, 24);
             this.menu.TabIndex = 0;
-            this.menu.Text = "menuStrip1";
             // 
-            // оПрограммеToolStripMenuItem
+            // ActionMenuItem
             // 
-            this.оПрограммеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.справкаToolStripMenuItem,
-            this.оРазработчикеToolStripMenuItem});
-            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.ActionMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.RebuildMenuItem});
+            this.ActionMenuItem.Name = "ActionMenuItem";
+            this.ActionMenuItem.Size = new System.Drawing.Size(70, 24);
+            this.ActionMenuItem.Text = "Действия";
             // 
-            // справкаToolStripMenuItem
+            // RebuildMenuItem
             // 
-            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.справкаToolStripMenuItem.Text = "Справка";
+            this.RebuildMenuItem.Name = "RebuildMenuItem";
+            this.RebuildMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.RebuildMenuItem.Text = "Пересоздать";
+            this.RebuildMenuItem.Click += new System.EventHandler(this.RebuildMenuItem_Click);
             // 
-            // оРазработчикеToolStripMenuItem
+            // DetailMenuItem
             // 
-            this.оРазработчикеToolStripMenuItem.Name = "оРазработчикеToolStripMenuItem";
-            this.оРазработчикеToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.оРазработчикеToolStripMenuItem.Text = "О разработчике";
+            this.DetailMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.HelpMenuItem,
+            this.ContactMenuItem});
+            this.DetailMenuItem.Name = "DetailMenuItem";
+            this.DetailMenuItem.Size = new System.Drawing.Size(94, 24);
+            this.DetailMenuItem.Text = "О программе";
+            // 
+            // HelpMenuItem
+            // 
+            this.HelpMenuItem.Name = "HelpMenuItem";
+            this.HelpMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.HelpMenuItem.Text = "Справка";
+            // 
+            // ContactMenuItem
+            // 
+            this.ContactMenuItem.Name = "ContactMenuItem";
+            this.ContactMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ContactMenuItem.Text = "О разработчике";
             // 
             // sceneWindow
             // 
@@ -80,17 +99,17 @@ namespace MagicMaze
             this.sceneWindow.DepthBits = ((byte)(16));
             this.sceneWindow.Location = new System.Drawing.Point(0, 27);
             this.sceneWindow.Name = "sceneWindow";
-            this.sceneWindow.Size = new System.Drawing.Size(855, 613);
+            this.sceneWindow.Size = new System.Drawing.Size(600, 600);
             this.sceneWindow.StencilBits = ((byte)(0));
             this.sceneWindow.TabIndex = 1;
-            this.sceneWindow.Load += new System.EventHandler(this.sceneWindow_Load);
-            this.sceneWindow.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sceneWindow_KeyDown);
+            this.sceneWindow.Load += new System.EventHandler(this.SceneWindow_Load);
+            this.sceneWindow.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SceneWindow_KeyDown);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(855, 640);
+            this.ClientSize = new System.Drawing.Size(600, 627);
             this.Controls.Add(this.sceneWindow);
             this.Controls.Add(this.menu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -107,9 +126,11 @@ namespace MagicMaze
         #endregion
 
         private System.Windows.Forms.MenuStrip menu;
-        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem оРазработчикеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DetailMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem HelpMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ContactMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ActionMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem RebuildMenuItem;
         private Tao.Platform.Windows.SimpleOpenGlControl sceneWindow;
     }
 }
