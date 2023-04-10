@@ -11,7 +11,7 @@
 
     public class MazeViewer : IMazeViewer
     {
-        private const int CELL_SIZE = 1;
+        private const int BORDER_SIZE = 1;
 
         private readonly SimpleOpenGlControl _sceneWindow;
 
@@ -27,10 +27,10 @@
             Gl.glMatrixMode(Gl.GL_PROJECTION);
             Gl.glLoadIdentity();
 
-            int rowSize = CELL_SIZE * maze.Parameters.RowCount;
-            int columnSize = CELL_SIZE * maze.Parameters.ColumnCount;
+            int rowSize = maze.Parameters.CellSize * maze.Parameters.RowCount;
+            int columnSize = maze.Parameters.CellSize * maze.Parameters.ColumnCount;
 
-            Gl.glOrtho(0f, columnSize, 0f, rowSize, -1f, 1f);
+            Gl.glOrtho(-BORDER_SIZE, columnSize + BORDER_SIZE, -BORDER_SIZE, rowSize + BORDER_SIZE, -1f, 1f);
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
 
             Gl.glClearColor(
@@ -40,18 +40,18 @@
                 maze.Colors.Background.A / 255.0f);
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT | Gl.GL_DEPTH_BUFFER_BIT);
 
-            DrawPolygon(maze.Parameters.FinishPoint, maze.Colors.Finish, CELL_SIZE);
-            DrawPolygon(cursorPosition, maze.Colors.Cursor, CELL_SIZE);
+            DrawPolygon(maze.Parameters.FinishPoint, maze.Colors.Finish, maze.Parameters.CellSize);
+            DrawPolygon(cursorPosition, maze.Colors.Cursor, maze.Parameters.CellSize);
 
             for (int rowIndex = 0; rowIndex < maze.Parameters.RowCount; rowIndex++)
             {
-                int y = rowIndex * CELL_SIZE;
+                int y = rowIndex * maze.Parameters.CellSize;
 
                 for (int columnIndex = 0; columnIndex < maze.Parameters.ColumnCount; columnIndex++)
                 {
-                    int x = columnIndex * CELL_SIZE;
+                    int x = columnIndex * maze.Parameters.CellSize;
 
-                    DrawCell(maze.Cells[rowIndex, columnIndex], x, y, CELL_SIZE, maze.Colors.Wall);
+                    DrawCell(maze.Cells[rowIndex, columnIndex], x, y, maze.Parameters.CellSize, maze.Colors.Wall);
                 }
             }
 
@@ -100,11 +100,14 @@
         {
             Gl.glColor3f(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f);
 
+            int x = point.X * size;
+            int y = point.Y * size;
+
             Gl.glBegin(Gl.GL_POLYGON);
-            Gl.glVertex2f(point.X, point.Y);
-            Gl.glVertex2f(point.X + size, point.Y);
-            Gl.glVertex2f(point.X + size, point.Y + size);
-            Gl.glVertex2f(point.X, point.Y + size);
+            Gl.glVertex2f(x, y);
+            Gl.glVertex2f(x + size, y);
+            Gl.glVertex2f(x + size, y + size);
+            Gl.glVertex2f(x, y + size);
             Gl.glEnd();
         }
     }
