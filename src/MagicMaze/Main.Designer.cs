@@ -36,6 +36,7 @@ namespace MagicMaze
             this.HelpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ContactMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sceneWindow = new Tao.Platform.Windows.SimpleOpenGlControl();
+            this.FindExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +55,8 @@ namespace MagicMaze
             // ActionMenuItem
             // 
             this.ActionMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.RebuildMenuItem});
+            this.RebuildMenuItem,
+            this.FindExitMenuItem});
             this.ActionMenuItem.Name = "ActionMenuItem";
             this.ActionMenuItem.Size = new System.Drawing.Size(70, 24);
             this.ActionMenuItem.Text = "Действия";
@@ -78,13 +80,13 @@ namespace MagicMaze
             // HelpMenuItem
             // 
             this.HelpMenuItem.Name = "HelpMenuItem";
-            this.HelpMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.HelpMenuItem.Size = new System.Drawing.Size(162, 22);
             this.HelpMenuItem.Text = "Справка";
             // 
             // ContactMenuItem
             // 
             this.ContactMenuItem.Name = "ContactMenuItem";
-            this.ContactMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ContactMenuItem.Size = new System.Drawing.Size(162, 22);
             this.ContactMenuItem.Text = "О разработчике";
             // 
             // sceneWindow
@@ -104,6 +106,13 @@ namespace MagicMaze
             this.sceneWindow.TabIndex = 1;
             this.sceneWindow.Load += new System.EventHandler(this.SceneWindow_Load);
             this.sceneWindow.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SceneWindow_KeyDown);
+            // 
+            // findExitMenuItem
+            // 
+            this.FindExitMenuItem.Name = "FindExitMenuItem";
+            this.FindExitMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.FindExitMenuItem.Text = "Найти выход";
+            this.FindExitMenuItem.Click += new System.EventHandler(this.FindExitMenuItem_Click);
             // 
             // Main
             // 
@@ -132,6 +141,7 @@ namespace MagicMaze
         private System.Windows.Forms.ToolStripMenuItem ActionMenuItem;
         private System.Windows.Forms.ToolStripMenuItem RebuildMenuItem;
         private Tao.Platform.Windows.SimpleOpenGlControl sceneWindow;
+        private System.Windows.Forms.ToolStripMenuItem FindExitMenuItem;
     }
 }
 

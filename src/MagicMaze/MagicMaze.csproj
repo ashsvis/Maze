@@ -101,6 +101,10 @@
       <Project>{19AB7778-7EF3-4B76-93C0-35AD7C64FF3D}</Project>
       <Name>MagicMaze.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MagicMaze.Extensions\MagicMaze.Extensions.csproj">
+      <Project>{29ce0815-a82a-40b6-be70-a6679949c2e6}</Project>
+      <Name>MagicMaze.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MagicMaze.Interfaces\MagicMaze.Interfaces.csproj">
       <Project>{3C7F0222-55AC-4F03-BE84-9521C75940B8}</Project>
       <Name>MagicMaze.Interfaces</Name>

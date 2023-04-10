@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F17D1876-7F62-4CBE-AC07-F226065802F8}</ProjectGuid>
+    <ProjectGuid>{29CE0815-A82A-40B6-BE70-A6679949C2E6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MagicMaze.Services</RootNamespace>
-    <AssemblyName>MagicMaze.Services</AssemblyName>
+    <RootNamespace>MagicMaze.Extensions</RootNamespace>
+    <AssemblyName>MagicMaze.Extensions</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -42,23 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CellFactory.cs" />
-    <Compile Include="MazeBuilder.cs" />
-    <Compile Include="RouteFinder.cs" />
-    <Compile Include="RouteGenerator.cs" />
+    <Compile Include="CellExtensions.cs" />
+    <Compile Include="PointExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MagicMaze.Core\MagicMaze.Core.csproj">
-      <Project>{19ab7778-7ef3-4b76-93c0-35ad7c64ff3d}</Project>
+      <Project>{19AB7778-7EF3-4B76-93C0-35AD7C64FF3D}</Project>
       <Name>MagicMaze.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MagicMaze.Extensions\MagicMaze.Extensions.csproj">
-      <Project>{29ce0815-a82a-40b6-be70-a6679949c2e6}</Project>
-      <Name>MagicMaze.Extensions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MagicMaze.Interfaces\MagicMaze.Interfaces.csproj">
-      <Project>{3c7f0222-55ac-4f03-be84-9521c75940b8}</Project>
+      <Project>{3C7F0222-55AC-4F03-BE84-9521C75940B8}</Project>
       <Name>MagicMaze.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>

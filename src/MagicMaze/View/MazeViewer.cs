@@ -21,7 +21,7 @@
             _sceneWindow.InitializeContexts();
         }
 
-        public void Draw(Maze maze, Point cursorPosition)
+        public void Draw(Maze maze, Route route, Point cursorPosition)
         {
             Gl.glViewport(0, 0, _sceneWindow.Width, _sceneWindow.Height);
             Gl.glMatrixMode(Gl.GL_PROJECTION);
@@ -39,6 +39,11 @@
                 maze.Colors.Background.B / 255.0f,
                 maze.Colors.Background.A / 255.0f);
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT | Gl.GL_DEPTH_BUFFER_BIT);
+
+            foreach (Point coordinate in route.Coordinates)
+            {
+                DrawPolygon(coordinate, maze.Colors.Route, maze.Parameters.CellSize);
+            }
 
             DrawPolygon(maze.Parameters.FinishPoint, maze.Colors.Finish, maze.Parameters.CellSize);
             DrawPolygon(cursorPosition, maze.Colors.Cursor, maze.Parameters.CellSize);

@@ -4,12 +4,11 @@
 
     using MagicMaze.Core.Entities;
     using MagicMaze.Core.Enums;
+    using MagicMaze.Extensions;
     using MagicMaze.Interfaces;
 
     public class MazeBuilder : IMazeBuilder
     {
-        private const int SIGN_OF_NEAREST = 1;
-
         private readonly ICellFactory _cellFactory;
 
         public MazeBuilder(ICellFactory cellFactory)
@@ -44,45 +43,12 @@
                 Point currentPoint = points[0];
                 for (int i = 1; i < points.Length; i++)
                 {
-                    MergeCells(maze.Cells, currentPoint, points[i]);
+                    maze.Cells.Merge(_cellFactory, currentPoint, points[i]);
                     currentPoint = points[i];
                 }
             }
 
             return maze;
-        }
-
-        private void MergeCells(Cell[,] cells, Point first, Point second)
-        {
-            if (first.X != second.X && first.Y != second.Y)
-            {
-                return;
-            }
-
-            int deltaX = first.X - second.X;
-            int deltaY = first.Y - second.Y;
-
-            if (-deltaX == SIGN_OF_NEAREST)
-            {
-                cells[first.X, first.Y] = _cellFactory.Create(cells[first.X, first.Y].Walls & ~Walls.Top);
-                cells[second.X, second.Y] = _cellFactory.Create(cells[second.X, second.Y].Walls & ~Walls.Bottom);
-            }
-            else if (deltaX == SIGN_OF_NEAREST)
-            {
-                cells[first.X, first.Y] = _cellFactory.Create(cells[first.X, first.Y].Walls & ~Walls.Bottom);
-                cells[second.X, second.Y] = _cellFactory.Create(cells[second.X, second.Y].Walls & ~Walls.Top);
-            }
-
-            if (-deltaY == SIGN_OF_NEAREST)
-            {
-                cells[first.X, first.Y] = _cellFactory.Create(cells[first.X, first.Y].Walls & ~Walls.Right);
-                cells[second.X, second.Y] = _cellFactory.Create(cells[second.X, second.Y].Walls & ~Walls.Left);
-            }
-            else if (deltaY == SIGN_OF_NEAREST)
-            {
-                cells[first.X, first.Y] = _cellFactory.Create(cells[first.X, first.Y].Walls & ~Walls.Left);
-                cells[second.X, second.Y] = _cellFactory.Create(cells[second.X, second.Y].Walls & ~Walls.Right);
-            }
         }
     }
 }

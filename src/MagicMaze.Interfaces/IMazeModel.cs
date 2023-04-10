@@ -9,5 +9,6 @@
         void MovePositionLeft();
         void MovePositionRight();
         void Push(Maze maze);
+        void Push(Route route);
     }
 }

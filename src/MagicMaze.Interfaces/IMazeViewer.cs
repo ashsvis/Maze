@@ -6,6 +6,6 @@
 
     public interface IMazeViewer
     {
-        void Draw(Maze maze, Point position);
+        void Draw(Maze maze, Route route, Point position);
     }
 }

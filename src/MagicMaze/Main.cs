@@ -1,7 +1,6 @@
 ﻿namespace MagicMaze
 {
     using System;
-    using System.Drawing;
     using System.Windows.Forms;
 
     using MagicMaze.Controllers;
@@ -57,6 +56,11 @@
         private void RebuildMenuItem_Click(object sender, EventArgs e)
         {
             _controller.CreateCommand(MazeParameters.Default, MazeColorSettings.Default);
+        }
+
+        private void FindExitMenuItem_Click(object sender, EventArgs e)
+        {
+            _controller.FindExitCommand();
         }
     }
 }
