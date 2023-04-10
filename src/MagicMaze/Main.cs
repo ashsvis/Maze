@@ -11,7 +11,6 @@
     public partial class Main : Form
     {
         private readonly MazeViewer _viewer;
-        private readonly MazeModel _model;
         private readonly MazeController _controller;
 
         public Main()
@@ -19,8 +18,7 @@
             InitializeComponent();
 
             _viewer = new MazeViewer(sceneWindow);
-            _model = new MazeModel(_viewer);
-            _controller = new MazeController(_model);
+            _controller = new MazeController(new MazeModel(_viewer));
         }
 
         private void SceneWindow_KeyDown(object sender, KeyEventArgs e)
