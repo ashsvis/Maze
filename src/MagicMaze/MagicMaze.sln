@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicMaze.Services", "..\Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicMaze.Extensions", "..\MagicMaze.Extensions\MagicMaze.Extensions.csproj", "{29CE0815-A82A-40B6-BE70-A6679949C2E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicMaze.Services.Tests", "..\MagicMaze.Services.Tests\MagicMaze.Services.Tests.csproj", "{F7270FAF-B226-406A-9078-4A1DD97A447C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{29CE0815-A82A-40B6-BE70-A6679949C2E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29CE0815-A82A-40B6-BE70-A6679949C2E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29CE0815-A82A-40B6-BE70-A6679949C2E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7270FAF-B226-406A-9078-4A1DD97A447C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7270FAF-B226-406A-9078-4A1DD97A447C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7270FAF-B226-406A-9078-4A1DD97A447C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7270FAF-B226-406A-9078-4A1DD97A447C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
