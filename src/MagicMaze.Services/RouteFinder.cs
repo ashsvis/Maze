@@ -22,25 +22,22 @@
             }
         }
 
-        private bool[,] _visitedPoints;
-        private Queue<RouteNode> _stackPoints;
-
         public RouteFinder()
         {
         }
 
         public Route Find(Cell[,] cells, Point startPoint, Point finishPoint, int rowCount, int columnCount)
         {
-            _visitedPoints = new bool[rowCount, columnCount];
-            _stackPoints = new Queue<RouteNode>();
-            _stackPoints.Enqueue(new RouteNode(null, startPoint));
+            var visitedPoints = new bool[rowCount, columnCount];
+            var stackPoints = new Queue<RouteNode>();
+            stackPoints.Enqueue(new RouteNode(null, startPoint));
 
             RouteNode finish = null;
 
-            while (_stackPoints.Count > 0)
+            while (stackPoints.Count > 0)
             {
-                RouteNode current = _stackPoints.Dequeue();
-                _visitedPoints[current.Position.X, current.Position.Y] = true;
+                RouteNode current = stackPoints.Dequeue();
+                visitedPoints[current.Position.X, current.Position.Y] = true;
 
                 if (current.Position == finishPoint)
                 {
@@ -48,11 +45,11 @@
                     break;
                 }
 
-                var neighbours = current.Position.GenerateNeighbours(rowCount, columnCount, _visitedPoints);
+                var neighbours = current.Position.GenerateNeighbours(rowCount, columnCount, visitedPoints);
 
                 foreach (var neighbour in neighbours)
                 {
-                    if (_visitedPoints[neighbour.X, neighbour.Y])
+                    if (visitedPoints[neighbour.X, neighbour.Y])
                     {
                         continue;
                     }
@@ -62,7 +59,7 @@
                         continue;
                     }
 
-                    _stackPoints.Enqueue(new RouteNode(current, neighbour));
+                    stackPoints.Enqueue(new RouteNode(current, neighbour));
                 }
             }
 
