@@ -38,6 +38,12 @@
             }
 
             Point currentPoint = _stackPoints.Dequeue();
+
+            if (_rowCount == 0 && _columnCount == 0)
+            {
+                return false;
+            }
+
             var routePoints = new List<Point> { currentPoint };
 
             while (true)
